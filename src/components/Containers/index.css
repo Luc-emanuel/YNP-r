@@ -1,0 +1,8 @@
+.allPage {
+  position: absolute;
+  width: 98.7%;
+  height: 99%;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+}
