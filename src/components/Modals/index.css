@@ -1,0 +1,99 @@
+.modalBox {
+  width: 1016px;
+  height: 616px;
+  background-color: #222;
+  border-radius: 20px;
+}
+
+.modalBoxLimited {
+  width: 956px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBoxBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 76px;
+  text-align: center;
+  border-bottom: 1px solid #ff9900;
+}
+
+.modalBoxBarBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 76px;
+  text-align: center;
+  border-top: 1px solid #ff9900;
+}
+
+div.modalBoxBar span {
+  font-family: "Ubuntu";
+  font-size: 28px;
+  color: #ff9900;
+}
+
+div.modalBoxBarBottom span {
+  font-family: "Ubuntu";
+  font-size: 30px;
+  cursor: pointer;
+  color: #ff9900;
+  width: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: row;
+  height: 462px;
+}
+
+.modalContentLeft {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  justify-content: center;
+  text-align: center;
+}
+
+div.modalContentLeft span {
+  font-family: "Ubuntu";
+  font-size: 86px;
+  color: #ff9900;
+  font-weight: 600;
+}
+
+.modalContentCenter {
+  display: flex;
+  flex-direction: column;
+  width: 456px;
+  justify-content: center;
+  text-align: center;
+}
+
+div.modalContentCenter span {
+  font-family: "Ubuntu";
+  font-size: 86px;
+  color: #ff9900;
+  font-weight: 600;
+}
+
+.modalContentRight {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  justify-content: center;
+  text-align: center;
+}
+
+div.modalContentRight span {
+  font-family: "Ubuntu";
+  font-size: 40px;
+  color: #ff9900;
+  font-weight: 600;
+}

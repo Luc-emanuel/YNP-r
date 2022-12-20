@@ -20,6 +20,7 @@ export const calcPoints = (card, first, timeRange, color) => {
         } else {
           sumMissClick += 1;
         }
+        return null;
       });
     }
     res = sum / timeRange;
