@@ -24,7 +24,7 @@
 
 .cardTitle {
   font-family: "Ubuntu";
-  font-size: 70px;
+  font-size: 60px;
   transition: color 150ms;
   transition-timing-function: ease-in-out;
   color: #ffd700;

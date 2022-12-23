@@ -35,5 +35,38 @@ export const calcPoints = (card, first, timeRange, color) => {
     points = points * 1.5;
     points = Math.round(points * 10) / 10;
   }
-  return { points: points, click_match: sum, click_miss: sumMissClick };
+  return {
+    points: points,
+    click_match: sum,
+    click_miss: sumMissClick === 1 ? 0 : sumMissClick,
+  };
+};
+
+export const prime = (n) => {
+  if (n <= 1) {
+    return false;
+  }
+  if (n % 2 === 0) {
+    return false;
+  }
+  let y = Math.round(Math.sqrt(n)),
+    fats = [];
+  for (let i = 1; i <= y; i++) {
+    if (fats.length <= 1) {
+      if (n % i === 0) {
+        fats.push(i);
+      }
+    } else {
+      break;
+    }
+  }
+  if (fats.length === 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
