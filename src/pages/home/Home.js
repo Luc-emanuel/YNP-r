@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import BaseContainer from "../../components/Containers/BaseContainer";
 import NotFound from "../notfound/NotFound";
 import Card from "../../components/Cards/Card";
-import Modal from "../../components/Modals/Modal";
+import Modal from "../../components/Modals/ModalResult/Modal";
+import ModalHelp from "../../components/Modals/ModalHelp/Modal";
 import "./index.css";
 
-import { shuffle, calcPoints } from "../../utils/functions";
+import { shuffle, calcPoints, prime } from "../../utils/functions";
 import { arrayBase, timeRange } from "../../utils/constants";
+
+import useSound from "use-sound";
+import success from "../../assets/sounds/success.mp3";
+import fail from "../../assets/sounds/fail.mp3";
+
+import { MdVolumeOff, MdVolumeUp } from "react-icons/md";
 
 const Home = () => {
   const [card, setCard] = useState([]);
@@ -22,6 +29,23 @@ const Home = () => {
   });
   const [resp, setResp] = useState({});
   const [color, setColor] = useState(true);
+  const [help, setHelp] = useState(false);
+  //
+  const [sound, setSound] = useState(true);
+  const [playSuccess, stopSuccess] = useSound(success, { volume: 0.4 });
+  const [playFail, stopFail] = useSound(fail, { volume: 0.12 });
+  //
+  const [primos, setPrimos] = useState([2, 3, 5, 7]);
+  const [lastNumber, setLastNumber] = useState(7);
+  const genPrimes = () => {
+    let tesp = prime(lastNumber + 2);
+    if (tesp) {
+      setPrimos([...primos, lastNumber + 2]);
+      setLastNumber(lastNumber + 2);
+    } else {
+      setLastNumber(lastNumber + 2);
+    }
+  };
   //
   const changeColorChoice = () => {
     if (!state.ready) {
@@ -37,8 +61,22 @@ const Home = () => {
       setCard([...card, value]);
       setArray(shuffle(array));
       if (state.first === null) {
+        if (sound) {
+          playSuccess();
+        }
         setState({ ...state, first: value, last: value });
       } else {
+        if (value === state.first) {
+          if (sound) {
+            stopFail.stop();
+            playSuccess();
+          }
+        } else {
+          if (sound) {
+            stopSuccess.stop();
+            playFail();
+          }
+        }
         setState({ ...state, last: value });
       }
     } else {
@@ -75,6 +113,7 @@ const Home = () => {
   //
   useEffect(() => {
     const timer = setInterval(() => {
+      genPrimes();
       if (init !== 0) {
         setTime(timeRange - diff());
       } else {
@@ -96,6 +135,7 @@ const Home = () => {
       open: false,
     });
     setResp({});
+    setHelp(false);
   };
   //
   const readyGame = () => {
@@ -110,9 +150,14 @@ const Home = () => {
         <div className="notSelect boxContainer">
           {state.open === true && state.finish === true ? (
             <Modal resetAll={resetAll} data={resp} />
+          ) : help === true && state.ready === false ? (
+            <ModalHelp setHelp={setHelp} />
           ) : (
             <>
-              <div className="boxLeft">
+              <div
+                className="boxLeft"
+                style={state.ready === true ? { opacity: "0.3" } : {}}
+              >
                 <div
                   id="bot1"
                   onClick={() => {
@@ -137,6 +182,22 @@ const Home = () => {
                   }}
                 >
                   <span>{!color ? "Cores" : "Sem cores"}</span>
+                </div>
+                <div
+                  id="bot3"
+                  onClick={() => {
+                    setHelp(true);
+                  }}
+                >
+                  <span>{"Ajuda"}</span>
+                </div>
+                <div
+                  id="bot4"
+                  onClick={() => {
+                    setSound(!sound);
+                  }}
+                >
+                  {sound ? <MdVolumeUp /> : <MdVolumeOff />}
                 </div>
               </div>
               <div className="boxCenter">
@@ -177,7 +238,10 @@ const Home = () => {
                   })}
                 </div>
               </div>
-              <div className="boxRight">
+              <div
+                className="boxRight"
+                style={state.ready === true ? { opacity: "0.3" } : {}}
+              >
                 <div id="bot">
                   <span>{Math.round(time * 100) / 100 + "s"}</span>
                 </div>

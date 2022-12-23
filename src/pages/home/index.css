@@ -67,6 +67,47 @@ div.boxLeft div#bot2 span {
   color: #000;
 }
 
+div.boxLeft div#bot3 {
+  width: 90%;
+  height: 60px;
+  background: linear-gradient(
+    68.3deg,
+    rgba(245, 177, 97, 1) 0.4%,
+    rgba(236, 54, 110, 1) 100.2%
+  );
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+div.boxLeft div#bot3 span {
+  font-family: "Ubuntu";
+  font-size: 26px;
+  color: #000;
+}
+
+div.boxLeft div#bot4 {
+  width: 90%;
+  height: 60px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+div.boxLeft div#bot4 svg {
+  font-size: 30px;
+  color: #fff;
+  margin: 0 auto;
+}
+
 .boxCenter {
   width: 616px;
   height: 616px;
@@ -110,6 +151,6 @@ div.boxRight div#bot {
 div.boxRight div#bot span {
   font-family: "Ubuntu";
   font-size: 18px;
-  color: #000;
+  color: #222;
   font-weight: 500;
 }
