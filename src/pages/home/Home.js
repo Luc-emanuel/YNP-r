@@ -6,7 +6,7 @@ import Modal from "../../components/Modals/ModalResult/Modal";
 import ModalHelp from "../../components/Modals/ModalHelp/Modal";
 import "./index.css";
 
-import { shuffle, calcPoints, prime } from "../../utils/functions";
+import { shuffle, calcPoints } from "../../utils/functions";
 import { arrayBase, timeRange } from "../../utils/constants";
 
 import useSound from "use-sound";
@@ -35,6 +35,7 @@ const Home = () => {
   const [playSuccess, stopSuccess] = useSound(success, { volume: 0.4 });
   const [playFail, stopFail] = useSound(fail, { volume: 0.12 });
   //
+  /*
   const [primos, setPrimos] = useState([2, 3, 5, 7]);
   const [lastNumber, setLastNumber] = useState(7);
   const genPrimes = () => {
@@ -45,7 +46,7 @@ const Home = () => {
     } else {
       setLastNumber(lastNumber + 2);
     }
-  };
+  };*/
   //
   const changeColorChoice = () => {
     if (!state.ready) {
@@ -113,7 +114,7 @@ const Home = () => {
   //
   useEffect(() => {
     const timer = setInterval(() => {
-      genPrimes();
+      //genPrimes();
       if (init !== 0) {
         setTime(timeRange - diff());
       } else {
