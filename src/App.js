@@ -4,15 +4,8 @@ import Home from "./pages/home/Home";
 import NotFound from "./pages/notfound/NotFound";
 
 const App = () => {
-  console.log(
-    " -- ",
-    window.location,
-    " -- ",
-    window.location.pathname,
-    " -- "
-  );
   return (
-    <Router>
+    <Router basename="/YNP-r">
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
