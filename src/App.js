@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/YNP-r" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
